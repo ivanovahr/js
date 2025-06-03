@@ -8,7 +8,7 @@ import Navbar from "./elements/Navbar"
 function App() {
 
   return (
-      <Box minH={"100vh"}>
+      <Box minH={"100vh"} bg='yellow.100'>
         <Navbar/>
         <Routes>
           <Route path='/' element={<HomePage />} />
