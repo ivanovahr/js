@@ -2,6 +2,7 @@ import React from 'react'
 import { BsPatchPlus } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { Container, Flex, Text, HStack, Button } from '@chakra-ui/react'
+import { useMealTable } from '../store/meal'
 
 const Navbar = () => {
   return (

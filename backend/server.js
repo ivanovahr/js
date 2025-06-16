@@ -1,34 +1,24 @@
 import express from "express";
 import { connectDB } from "./config/db.js";    
 import dotenv from 'dotenv';
-import Meal from './models/meal.model.js';
+import mealRoutes from "./routes/meal.route.js"
 dotenv.config();
 
 const app = express();
-app.use(express.json()); // allows to accept json in req.body
+const PORT = process.env.PORT || 5000;
 
-app.get("/", (req, res) => {
-    res.send("Server is ready");
-});
+// Allows to accept json in req.body
+app.use(express.json()); 
 
-app.post("/api/meals", async (req, res) => {
-  const meal_name = req.body;
-  if(!meal_name) {
-    return res.status(400).json({success: false, message: "Please provide all fields"});
-  }
-  
-  const newMeal = new Meal(meal_name);
+// Prefix everithing in the routes file
+app.use("/api/meals", mealRoutes);
 
-  try{
-    await newMeal.save();
-    return res.status(201).json({success: true, data: newMeal});
-  } catch(error) {
-    console.error("Error creating product:", error.message);
-    res.status(500).json({success: false, message: "Server error"});
-  }
-});
+// app.get("/", (req, res) => {
+//     res.send("Server is ready");
+// });
 
-app.listen(5000, () => {
+
+app.listen(PORT, () => {
     connectDB();
-  console.log("Server started at http://localhost:5000");
+  console.log("Server started at http://localhost:" + PORT);
 });

@@ -1,9 +1,10 @@
 import React from "react"
 import { Box } from "@chakra-ui/react"
 import { Routes, Route } from "react-router-dom"
+import { Toaster } from "@/components/ui/toaster";
 import CreatePage from "./pages/CreatePage"
 import HomePage from "./pages/HomePage"
-import Navbar from "./elements/Navbar"
+import Navbar from "./components_app/Navbar"
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path="/create" element={<CreatePage />} />
         </Routes>
+        <Toaster/>
       </Box>
   )
 }
