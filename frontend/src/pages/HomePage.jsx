@@ -17,7 +17,7 @@ const HomePage = () => {
         <Heading as={"h1"} size={"2xl"} mb={16} mt={8} textAlign={"center"}>
           All Meals
         </Heading>
-        <SimpleGrid  columns={4} spacing={8} w={"full"}>
+        <SimpleGrid  columns={4} spacing={8} w={"full"} spaceY={4} spaceX={2}>
           {meals.map((meal) => (
             <MealCard key={meal._id} meal={meal} />
           ))}
