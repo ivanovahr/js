@@ -25,15 +25,15 @@ export const useMealTable = create((set) => ({
         const data = await res.json();
         set({meals: data.data});
     },
-    // deleteMeal: async(id)=> {
-    //     const res = await fetch(`/api/meals/${id}`,{
-    //         method:"DELETE",
-    //     })
-    //     const data = await res.json();
-    //     if(!data.success) return {success: false, message: data.message};
-    //     set((state) => ({meals: state.meals.filter(meal => meal._id !== id)}));
-    //     return{success: true, message: "Meal deleted successfully."};
-    // },
+    deleteMeal: async(id)=> {
+        const res = await fetch(`/api/meals/${id}`,{
+            method:"DELETE",
+        })
+        const data = await res.json();
+        if(!data.success) return {success: false, message: data.message};
+        set((state) => ({meals: state.meals.filter(meal => meal._id !== id)}));
+        return{success: true, message: "Meal deleted successfully."};
+    },
 
 
 }))
